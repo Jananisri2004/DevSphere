@@ -6,17 +6,29 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
 
-    if (!storedUser) {
-      navigate("/login");
-    } else {
-      setUser(storedUser);
-    }
+      const response = await fetch("http://localhost:5000/dashboard", {
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      if (!response.ok) {
+        navigate("/login");
+        return;
+      }
+
+      const data = await response.json();
+      setUser(data);
+    };
+
+    fetchData();
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
