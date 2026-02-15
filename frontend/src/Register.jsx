@@ -33,7 +33,9 @@ function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/register", {
+      const API = "https://devsphere-backend-r83a.onrender.com";
+
+      const response = await axios.post(`${API}/register`, {
         fullName: formData.fullName,
         email: formData.email,
         mobile: formData.mobile,
@@ -43,6 +45,7 @@ function Register() {
         gender: formData.gender,
         password: formData.password,
       });
+
 
       alert(response.data.message);
       navigate("/login");
