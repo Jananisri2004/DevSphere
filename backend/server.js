@@ -121,6 +121,7 @@ app.post("/login", async (req, res) => {
     res.status(200).json({
       message: "Login successful",
       user: {
+        _id: user._id,   // ADD THIS LINE
         fullName: user.fullName,
         email: user.email,
         mobile: user.mobile,
