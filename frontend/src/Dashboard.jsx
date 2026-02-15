@@ -9,7 +9,7 @@ function Dashboard() {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:5000/dashboard", {
+      const response = await fetch("https://devsphere-backend-r83a.onrender.com/dashboard", {
         headers: {
           Authorization: token,
         },
