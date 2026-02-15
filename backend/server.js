@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const app = express();
 
 app.use(cors({
-  origin: "https://dev-sphere-ecru.vercel.app"
+  origin: "*"
 }));
 
 app.use(express.json());
